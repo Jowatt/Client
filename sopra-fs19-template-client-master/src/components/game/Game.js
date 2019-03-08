@@ -12,6 +12,11 @@ const Container = styled(BaseContainer)`
   text-align: center;
 `;
 
+const Linki = styled(Link)`
+  color: white;
+  text-decoration: none;
+ `;
+
 const Users = styled.ul`
   list-style: none;
   padding-left: 0;
@@ -22,6 +27,9 @@ const PlayerContainer = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  &:hover {
+    background-color: rgba(256,256,256,.05);
+  }
 `;
 
 class Game extends React.Component {
@@ -67,7 +75,8 @@ class Game extends React.Component {
           // delays continuous execution of an async operation for 0.8 seconds.
           // This is just a fake async call, so that the spinner can be displayed
           // feel free to remove it :)
-          try { this.setState({users}); }
+          try { this.setState({users});
+            }
           catch {
             alert("Sorry something went wrong!");
             this.logout();
@@ -77,7 +86,7 @@ class Game extends React.Component {
         })
         .catch(err => {
           console.log(err);
-          alert("Something went wrong fetching the users: " + err);
+          alert("Something went wrong fetching the profile: " + err);
         });
   }
 
@@ -93,13 +102,15 @@ class Game extends React.Component {
             <Users>
               {this.state.users.map(user => {
                 return (
-                    <Link to={"/path"}>
+                    <Linki to={{pathname: '/profile',
+                      state: {user: user}}}>
+
                   <PlayerContainer key={user.id}>
                     <Player user={user}
 
                     />
                   </PlayerContainer>
-                    </Link>
+                    </Linki>
                 );
               })}
             </Users>
