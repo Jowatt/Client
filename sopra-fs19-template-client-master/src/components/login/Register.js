@@ -22,7 +22,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 60%;
-  height: 520px;
+  height: 600px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 37px;
@@ -65,7 +65,7 @@ const ButtonContainer = styled.div`
   margin-top: 20px;
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
   font-weight: bold;
   color: white;
   text-align: center;
@@ -104,6 +104,7 @@ class Register extends React.Component {
                 name: this.state.name,
                 username: this.state.username,
                 password: this.state.password,
+                birthDay: this.state.birthDay
             })
         })
             .then(response => {
@@ -187,6 +188,13 @@ render() {
                             this.handleInputChange("name", e.target.value);
                         }}
                     />
+                    <Label>Birthday</Label>
+                    <InputField type="date"
+                        placeholder="Enter here.."
+                        onChange={e =>{
+                            this.handleInputChange("birthDay", e.target.value);
+                        }}
+                     />
                     <Label>Password</Label>
                     <InputField type="password"
                         placeholder="Enter here.."

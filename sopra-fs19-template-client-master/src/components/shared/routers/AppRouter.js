@@ -6,8 +6,9 @@ import { LoginGuard } from "../routeProtectors/LoginGuard";
 import Login from "../../login/Login";
 import { RegisterGuard } from "../routeProtectors/RegisterGuard";
 import Register from "../../login/Register";
-import Profile from "../../profile/Profile"
+import Profile from "../../profile/Profile";
 import ProfileRouter from "./ProfileRouter";
+import Edit from "../../edit/Edit";
 
 /**
  * Main router of your application.
@@ -52,16 +53,18 @@ class AppRouter extends React.Component {
               />
 
               <Route
-                  path="/profile"
-                  render={() => (
-                          <ProfileRouter base={"/profile"} />
-                  )}
-              />
-
-              <Route
-                  path="/profile/:id"
+                  exact
+                  path="/users/:id"
                     component={Profile}
               />
+              <Route
+                  path="/edit"
+                  exact
+                  render={() => (
+                      <Edit/>
+                  )}
+              />
+              <Route path="/users" exact render={() => <Redirect to={"/game"} />} />
 
             <Route path="/" exact render={() => <Redirect to={"/game"} />} />
           </div>

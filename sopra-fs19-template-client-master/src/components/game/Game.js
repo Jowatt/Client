@@ -50,7 +50,7 @@ class Game extends React.Component {
       body: JSON.stringify({token: localStorage.getItem(("token"))})
     }).then(response => {
       if (response.ok){
-        localStorage.removeItem("token");
+        localStorage.clear();
         this.props.history.push("/login");
       }
       else throw new Error(response.status);
@@ -58,6 +58,10 @@ class Game extends React.Component {
       console.log(err);
       alert("Something went wrong: " + err);
     });
+  }
+
+  profilePage(user){
+    this.props.history.push("/users/" + user.id)
   }
 
   componentDidMount() {
@@ -93,7 +97,7 @@ class Game extends React.Component {
   render() {
     return (
       <Container>
-        <h2>Happy Coding! </h2>
+        <h2>Users</h2>
         <p>Get all users from secure end point:</p>
         {!this.state.users ? (
           <Spinner />
@@ -102,15 +106,13 @@ class Game extends React.Component {
             <Users>
               {this.state.users.map(user => {
                 return (
-                    <Linki to={{pathname: '/profile',
-                      state: {user: user}}}>
-
-                  <PlayerContainer key={user.id}>
+                  <PlayerContainer key={user.id} onClick={() => {
+                    localStorage.setItem("compId", user.id);
+                    this.profilePage(user)
+                  }}>
                     <Player user={user}
-
                     />
                   </PlayerContainer>
-                    </Linki>
                 );
               })}
             </Users>

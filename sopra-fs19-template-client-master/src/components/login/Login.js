@@ -114,6 +114,7 @@ class Login extends React.Component {
                 this.setState({"requestValid": true});
                 // store the token into the local storage
                 localStorage.setItem("token", jsonResponse.token);
+                localStorage.setItem("id", jsonResponse.id);
                 // user login successfully worked --> navigate to the route /game in the GameRouter
                 this.props.history.push(`/game`);
             })
@@ -128,7 +129,6 @@ class Login extends React.Component {
 
     demandReg(){
         this.props.history.push('/register')
-        //this.props.history.push('/register')
     }
     /**
      *  Every time the user enters something in the input field, the state gets updated.

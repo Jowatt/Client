@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Redirect, Route } from "react-router-dom";
 import Profile from "../../profile/Profile";
 import User from "../models/User";
+import {Button} from "../../../views/design/Button";
+
 
 const Container = styled.div`
   display: flex;
@@ -18,11 +20,12 @@ class ProfileRouter extends React.Component {
             <Container>
                 <Route
                     exact
-                    path={`${this.props.base}/profile/${this.props.user.username}`}
+                    path={`${this.props.base}/users/${this.props.user.username}`}
                     render={() =>
                         <Profile user={this.props.base}/>
                     }
                 />
+
 
                 <Route
                     exact
