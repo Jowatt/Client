@@ -65,7 +65,9 @@ class Edit extends React.Component {
                 birthDay: localStorage.getItem("birthday")
             })
         })
-            .then(() => {
+            .then(response => {
+                if (response.status === 409) alert("This username already exists! Can not change to this username.")
+                else alert ("User has been updated.")
                 this.props.history.push(`/game`);
             })
             .catch(err => {
@@ -104,6 +106,7 @@ class Edit extends React.Component {
                     >
                         Back
                     </Button>
+                    &nbsp;&nbsp;&nbsp;
                     <Button
                         //disabled={!this.state.username && !this.state.birthday}
                         width="20%"

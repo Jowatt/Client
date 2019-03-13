@@ -94,7 +94,6 @@ class Register extends React.Component {
      * If the request is successful, a new user is returned to the front-end and its token is stored in the localStorage.
      */
     register() {
-        let status;
         fetch(`${getDomain()}/users`, {
             method: "POST",
             headers: {
@@ -107,17 +106,15 @@ class Register extends React.Component {
                 birthDay: this.state.birthDay
             })
         })
+
             .then(response => {
-                status = response.status;
-                return response.json();
-            })
-            .then(returnedUser => {
                 //handle errorResponses
-                if (status === 400) {
+                if (response.status === 409) {
                     this.setState({"requestValid": false});
                     return;
                 }
-                else if (returnedUser.token === null){ throw new Error (status + " - " + returnedUser.message);}
+                else if (response.status === 201){alert ("User has been created!")}
+                else throw new Error();
 
                 this.props.history.push(`/login`);
             })
