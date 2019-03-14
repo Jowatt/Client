@@ -185,8 +185,6 @@ class Login extends React.Component {
                                 onClick={() => {
                                     this.login();
                                 }}
-
-
                             >
                                 Login
                             </Button>
@@ -196,7 +194,6 @@ class Login extends React.Component {
                                 onClick={() => {
                                     this.demandReg()
                                 }}>
-
                                 Sign Up
                             </Button>
                         </ButtonContainer>

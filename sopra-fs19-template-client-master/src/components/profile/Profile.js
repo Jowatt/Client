@@ -70,13 +70,9 @@ class Profile extends React.Component{
                 console.log(this.state.userNow);
                 console.log(localStorage.getItem("id"))
             });
-        //console.log(this.state.userNow);
-        //console.log(localStorage.getItem("token"));
-        //console.log(this.state.user.username);
     }
 
     return(){
-
         this.props.history.push(`/game`)
     }
 
@@ -123,13 +119,4 @@ class Profile extends React.Component{
         return (new Date(Number(this.state.user.creationDate))).toDateString();
     }
     }
-
-
     export default withRouter(Profile)
-    //<Container>
-    //<Label>{this.state.user.id}</Label>
-//<Label>{this.state.user.username}</Label>
-//<Label>{this.state.user.name}</Label>
-//<Label>{this.state.user.birthDay}</Label>
-//<Label>{this.state.user.creationDate}</Label>
-//</Container>

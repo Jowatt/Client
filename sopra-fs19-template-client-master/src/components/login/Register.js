@@ -171,7 +171,6 @@ render() {
                     <Title>Enter your credentials!</Title>
                     <Label>Username</Label>
                     <ErrorLabel display={this.state.requestValid?"none":""}>username already existing.</ErrorLabel>
-
                     <InputField
                         placeholder="Enter here.."
                         onChange={e => {
@@ -207,7 +206,7 @@ render() {
                                 }}
                                 onKeyPress={event => {
                                     if(event.key === 'Enter') {
-                                        if (!this.state.username || !this.state.name || !this.state.password || !this.state.passwordValid || !this.state.passwordRepeat){
+                                        if (!this.state.username || !this.state.name || !this.state.password || !this.state.birthDay || !this.state.passwordValid || !this.state.passwordRepeat){
                                             return
                                         }else{
                                         this.register();}
@@ -225,7 +224,7 @@ render() {
                         </Button>
                         &nbsp;&nbsp;&nbsp;
                         <Button
-                            disabled={!this.state.username || !this.state.name || !this.state.password || !this.state.passwordValid || !this.state.passwordRepeat}
+                            disabled={!this.state.username || !this.state.name || !this.state.password || !this.state.birthDay || !this.state.passwordValid || !this.state.passwordRepeat}
                             width="50%"
                             onClick={() => {
                                 this.register();

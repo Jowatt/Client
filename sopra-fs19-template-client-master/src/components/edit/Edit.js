@@ -37,6 +37,10 @@ class Edit extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state={
+            username: null
+            //birthDay: null
+        }
 
 
     }
@@ -52,7 +56,6 @@ class Edit extends React.Component {
     }
 
     submit(){
-        console.log(localStorage.getItem("id"));
         fetch(`${getDomain()}/users/${localStorage.getItem("id")}?token=${localStorage.getItem("token")}`, {
             method: "PUT",
             headers: {
@@ -66,16 +69,16 @@ class Edit extends React.Component {
             })
         })
             .then(response => {
-                if (response.status === 409) alert("This username already exists! Can not change to this username.")
-                else alert ("User has been updated.")
+                if (response.status === 409) alert("This username already exists! Can not change to this username.");
+                else alert ("User has been updated.");
+                localStorage.removeItem("birthday");
+                localStorage.removeItem("username");
                 this.props.history.push(`/game`);
             })
             .catch(err => {
                 console.log(err);
             });
 
-        //localStorage.setItem("username", localStorage.getItem("nameToChange"));
-        //localStorage.setItem("birthday", localStorage.getItem("dateToChange"));
     }
 
     render() {
@@ -108,7 +111,7 @@ class Edit extends React.Component {
                     </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button
-                        //disabled={!this.state.username && !this.state.birthday}
+                        //disabled={!this.state.username && !this.state.birthDay}
                         width="20%"
                         onClick={() => {
 
