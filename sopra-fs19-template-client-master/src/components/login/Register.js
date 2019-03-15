@@ -115,7 +115,7 @@ class Register extends React.Component {
                 }
                 else if (response.status === 201){alert ("User has been created!")}
                 else throw new Error();
-
+                console.log(this.state.birthDay);
                 this.props.history.push(`/login`);
             })
             .catch(err => {
